@@ -1,0 +1,13 @@
+## Usage:
+Clone this repository:
+```bash
+mkdir ~/dotfiles
+cd ~/dotfiles
+git clone https://github.com/xw363/dotfiles.git
+```
+
+Then do the following:
+- bash: add `source ~/dotfiles/bashrc` to the last line of `~/.bashrc`
+- tmux: add `source ~/dotfiles/tmux.conf` to the last line of `~/.tmux.conf`
+- VIM: add `source ~/dotfiles/vimrc` to the last line of `~/.vimrc`
+- zsh: modify `~/.zshrc` using `dotfiles/zshrc`

@@ -39,10 +39,12 @@ if &term =~ '256color'
 endif
 
 " Set mode dependent cursor (for mintty)
-let &t_ti.="\e[1 q"
-let &t_SI.="\e[5 q"
-let &t_EI.="\e[1 q"
-let &t_te.="\e[0 q"
+if $WSL == '1'
+    let &t_ti.="\e[1 q"
+    let &t_SI.="\e[5 q"
+    let &t_EI.="\e[1 q"
+    let &t_te.="\e[0 q"
+endif
 
 " GVIM options
 set guioptions-=l

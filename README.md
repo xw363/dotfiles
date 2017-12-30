@@ -10,7 +10,7 @@ Then do the following:
 - VIM: add `source ~/dotfiles/vimrc` to the last line of `~/.vimrc`
 - zsh: modify `~/.zshrc` using `zshrc`
 
-### For use on Windows Subsystem for Linux
+### For use on Windows Subsystem for Linux:
 Add the following line to `~/.bashrc` and `~/.zshrc`:
 ```bash
 export WSL=1

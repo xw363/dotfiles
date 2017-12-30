@@ -38,7 +38,7 @@ if &term =~ '256color'
     set t_ut=
 endif
 
-" Set mode dependent cursor (for mintty)
+" Set mode dependent cursor for Windows 10's Ubuntu
 if $WSL == '1'
     let &t_ti.="\e[1 q"
     let &t_SI.="\e[5 q"

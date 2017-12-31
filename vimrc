@@ -21,7 +21,7 @@ set background=dark
 colorscheme molokai
 
 " Set different color for column 81 and onward
-let &colorcolumn=join(range(81,999),",")
+let &colorcolumn=join(range(81, 999), ",")
 
 " Powerline status bar
 python3 from powerline.vim import setup as powerline_setup
@@ -34,16 +34,8 @@ set laststatus=2
 " Disable Background Color Erase (BCE) so that color schemes render properly
 " when inside 256-color tmux and GNU screen
 " See also http://snk.tuxfamily.org/log/vim-256color-bce.html
-if &term =~ '256color'
+if &term=~"256color"
     set t_ut=
-endif
-
-" Set mode dependent cursor for Windows Subsystem for Linux
-if $WSL == '1'
-    let &t_ti.="\e[1 q"
-    let &t_SI.="\e[5 q"
-    let &t_EI.="\e[1 q"
-    let &t_te.="\e[0 q"
 endif
 
 " GVIM options

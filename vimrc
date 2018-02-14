@@ -8,15 +8,15 @@ set shiftwidth=4
 set expandtab
 
 " Set swp direcotry
-set directory=~/.vim/swp/
+if has('unix')
+    set directory=~/.vim/swp/
+    set undodir=~/.vim/undo/
+endif
 
 " Do not wrap lines
 set nowrap
 
-runtime bundle/pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-
-" Set theme
+" Set color scheme
 set background=dark
 colorscheme molokai
 
@@ -47,4 +47,34 @@ set guioptions-=R
 set guioptions-=m
 set guioptions-=T
 
-set guifont=DejaVu\ Sans\ Mono\ 11
+if has('unix') && $WSL!='1'
+    set guifont=DejaVu\ Sans\ Mono\ 11
+endif
+
+" Vim plug
+call plug#begin('~/.vim/plugged')
+" File explorer panel
+Plug 'scrooloose/nerdtree'
+
+" Auto-completion
+Plug 'Valloric/YouCompleteMe'
+set completeopt-=preview
+
+" Syntax check
+Plug 'vim-syntastic/syntastic'
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+
+" Brackets handling
+Plug 'jiangmiao/auto-pairs'
+
+" LaTex support
+Plug 'lervag/vimtex'
+if $WSL=='1'
+    let g:vimtex_compiler_latexmk={
+                \'callback': 0
+                \}
+    let g:vimtex_view_automatic=0
+endif
+
+call plug#end()

@@ -48,7 +48,7 @@ set guioptions-=m
 set guioptions-=T
 
 if has('unix') && $WSL!='1'
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Regular\ 12
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Regular\ 11
 endif
 
 " Vim plug

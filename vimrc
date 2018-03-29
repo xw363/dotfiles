@@ -15,6 +15,13 @@ endif
 
 " Do not wrap lines
 set nowrap
+" Wrap for .tex files
+augroup WrapLineInTeXFile
+    autocmd!
+    autocmd FileType tex setlocal wrap
+augroup END
+
+set encoding=utf-8
 
 " Set color scheme
 set background=dark
@@ -47,8 +54,13 @@ set guioptions-=R
 set guioptions-=m
 set guioptions-=T
 
-if has('unix') && $WSL!='1'
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Regular\ 11
+if has('unix')
+    if  $WSL!='1'
+        set guifont=DejaVu\ Sans\ Mono\ 11
+        set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Regular\ 11
+    endif
+elseif has('win32')
+    set guifont=Consolas\ NF:h12
 endif
 
 " Vim plug
@@ -79,6 +91,11 @@ if $WSL=='1'
                 \'callback': 0
                 \}
     let g:vimtex_view_automatic=0
+elseif has('win32')
+    let g:vimtex_view_general_viewer='SumatraPDF'
+    let g:vimtex_view_general_options
+                \ = '-reuse-instance -forward-search @tex @line @pdf'
+    let g:vimtex_view_general_options_latexmk='-reuse-instance'
 endif
 
 call plug#end()

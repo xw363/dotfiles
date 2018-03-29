@@ -59,6 +59,10 @@ Plug 'scrooloose/nerdtree'
 " Auto-completion
 Plug 'Valloric/YouCompleteMe'
 set completeopt-=preview
+let g:ycm_semantic_triggers = {
+            \ 'python': ['re![^\s]{2}'],
+            \ 'tex': ['re![^\s]{2}']
+            \ }
 
 " Syntax check
 Plug 'vim-syntastic/syntastic'

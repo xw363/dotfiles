@@ -55,7 +55,7 @@ set guioptions-=m
 set guioptions-=T
 
 if has('unix') && $WSL!='1'
-        set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Regular\ 11
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Regular\ 11
 elseif has('win32')
     set guifont=Consolas\ NF:h12
 endif

@@ -24,11 +24,11 @@ augroup END
 set encoding=utf-8
 
 " Set color scheme
-set background=dark
-colorscheme molokai
+" set background=dark
+" colorscheme molokai
 
 " Set different color for column 81 and onward
-let &colorcolumn=join(range(81, 999), ",")
+" let &colorcolumn=join(range(81, 999), ",")
 
 " Powerline status bar
 python3 from powerline.vim import setup as powerline_setup
@@ -43,6 +43,12 @@ set laststatus=2
 " See also http://snk.tuxfamily.org/log/vim-256color-bce.html
 if &term=~"256color"
     set t_ut=
+endif
+
+if $TERM_PROGRAM =~ "iTerm"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+    let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 endif
 
 " GVIM options

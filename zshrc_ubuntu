@@ -1,0 +1,30 @@
+# Ubuntu-specific settings
+# Set locale
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# vi-mode cursor shape in Windows Terminal
+function zle-keymap-select zle-line-init zle-line-finish {
+    case $KEYMAP in
+      vicmd)      print -n -- "\e[2 q";; # block cursor
+      viins|main) print -n -- "\e[6 q";; # line cursor
+    esac
+
+    zle reset-prompt
+    zle -R
+}
+
+zle -N zle-line-init
+zle -N zle-line-finish
+zle -N zle-keymap-select
+
+# history search with arrow keys in vi-mode's insert mode
+autoload -Uz history-search-end
+
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+
+bindkey -M viins '^[[A' history-beginning-search-backward-end \
+                 '^[OA' history-beginning-search-backward-end \
+                 '^[[B' history-beginning-search-forward-end \
+                 '^[OB' history-beginning-search-forward-end

@@ -21,6 +21,16 @@ Apply the following changes:
         macos
     )
     ```
+    For WSL Ubuntu: add `source ~/dotfiles/zshrc_ubuntu` to the last line of
+    `~/.zshrc`. Also modify the following lines in `~/.zshrc`:
+    ```bash
+    ZSH_THEME="powerlevel10k/powerlevel10k"
+    plugins=(
+        git
+        vi-mode
+        ubuntu
+    )
+    ```
 
 - VIM: add `source ~/dotfiles/vimrc` to the last line of `~/.vimrc`
 

@@ -23,17 +23,14 @@ augroup END
 
 set encoding=utf-8
 
-" Set color scheme
+" TODO: Set color scheme
 " set background=dark
 " colorscheme molokai
 
-" Set different color for column 81 and onward
-" let &colorcolumn=join(range(81, 999), ",")
-
-" Powerline status bar
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
+" TODO: Powerline status bar
+" python3 from powerline.vim import setup as powerline_setup
+" python3 powerline_setup()
+" python3 del powerline_setup
 
 " Always show the status bar
 set laststatus=2
@@ -45,10 +42,16 @@ if &term=~"256color"
     set t_ut=
 endif
 
+" Set cursor shape in different modes for iTerm2
 if $TERM_PROGRAM =~ "iTerm"
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+    " Vertical bar in insert mode
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    " Block in normal mode
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    " Underline in replace mode
     let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+    " Show block cursor in normal mode when vim starts
+    autocmd VimEnter * normal! :startinsert | stopinsert
 endif
 
 " GVIM options
@@ -60,45 +63,9 @@ set guioptions-=R
 set guioptions-=m
 set guioptions-=T
 
-if has('unix') && $WSL!='1'
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Regular\ 11
-elseif has('win32')
-    set guifont=Consolas\ NF:h12
-endif
-
-" Vim plug
-call plug#begin('~/.vim/plugged')
-" File explorer panel
-Plug 'scrooloose/nerdtree'
-
-" Auto-completion
-Plug 'Valloric/YouCompleteMe'
-set completeopt-=preview
-let g:ycm_semantic_triggers = {
-            \ 'python': ['re![^\s]{2}'],
-            \ 'tex': ['re![^\s]{2}']
-            \ }
-
-" Syntax check
-Plug 'vim-syntastic/syntastic'
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=0
-
-" Brackets handling
-Plug 'jiangmiao/auto-pairs'
-
-" LaTex support
-Plug 'lervag/vimtex'
-if $WSL=='1'
-    let g:vimtex_compiler_latexmk={
-                \'callback': 0
-                \}
-    let g:vimtex_view_automatic=0
-elseif has('win32')
-    let g:vimtex_view_general_viewer='SumatraPDF'
-    let g:vimtex_view_general_options
-                \ = '-reuse-instance -forward-search @tex @line @pdf'
-    let g:vimtex_view_general_options_latexmk='-reuse-instance'
-endif
-
-call plug#end()
+" TODO: Set font
+" if has('unix') && $WSL!='1'
+"     set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Regular\ 11
+" elseif has('win32')
+"     set guifont=Consolas\ NF:h12
+" endif

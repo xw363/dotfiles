@@ -1,18 +1,22 @@
 # dotfiles
-Personal configuration files for UNIX systems.
+Personal configuration files for terminal environments on MacOS and Linux.
 
-## Usage:
+## Usage
 Clone this repository at home directory:
 ```bash
 git clone https://github.com/xw363/dotfiles.git
 ```
 
-Apply the following changes:
-- bash: add `source ~/dotfiles/bashrc` to the last line of `~/.bashrc`
+Complete the following setup:
+- bash: append `source ~/dotfiles/bashrc` to the end of `~/.bashrc`
 - zsh:
-    - Install Oh My Zsh and Powerlevel10k if not already
-    - For macOS: add `source ~/dotfiles/zshrc_macos` to the last line of
-    `~/.zshrc`. Also modify the following lines in `~/.zshrc`:
+  - Make sure Oh My Zsh and Powerlevel10k are installed
+  - In `~/.p10k.zsh`, locate and update `POWERLEVEL9K_VI_INSERT_MODE_STRING` to
+    ```bash
+    typeset -g POWERLEVEL9K_VI_INSERT_MODE_STRING=INSERT
+    ```
+  - For macOS: append `source ~/dotfiles/zshrc_macos` to the end of
+    `~/.zshrc`. Locate and update `ZSH_THEME` and `plugins` in `~/.zshrc` to
     ```bash
     ZSH_THEME="powerlevel10k/powerlevel10k"
     plugins=(
@@ -21,8 +25,8 @@ Apply the following changes:
         macos
     )
     ```
-    For WSL Ubuntu: add `source ~/dotfiles/zshrc_ubuntu` to the last line of
-    `~/.zshrc`. Also modify the following lines in `~/.zshrc`:
+  - For WSL Ubuntu: append `source ~/dotfiles/zshrc_ubuntu` to the end of
+    `~/.zshrc`. Locate and update `ZSH_THEME` and `plugins` in `~/.zshrc` to
     ```bash
     ZSH_THEME="powerlevel10k/powerlevel10k"
     plugins=(
@@ -31,14 +35,10 @@ Apply the following changes:
         ubuntu
     )
     ```
-
-- VIM: add `source ~/dotfiles/vimrc` to the last line of `~/.vimrc`
-
-Not in use currently:
-- tmux: add `source ~/dotfiles/tmux.conf` to the last line of `~/.tmux.conf`
+- VIM: append `source ~/dotfiles/vimrc` to the end of `~/.vimrc`
 
 ### For use on Windows Subsystem for Linux:
-Add the following line to `~/.bashrc` and `~/.zshrc`:
+Append the following to `~/.bashrc` and `~/.zshrc`:
 ```bash
 export WSL=1
 ```

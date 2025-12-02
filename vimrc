@@ -1,5 +1,5 @@
 " Set line number
-set number
+set number relativenumber
 
 " Set indentation to 4 spaces
 set smartindent
@@ -50,6 +50,17 @@ if $TERM_PROGRAM =~ "iTerm"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
     " Underline in replace mode
     let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+    " Show block cursor in normal mode when vim starts
+    autocmd VimEnter * normal! :startinsert | stopinsert
+endif
+
+if has('unix') && $WSL=='1'
+    " Vertical bar in insert mode
+    let &t_SI = "\<Esc>[6 q"
+    " Block in normal mode
+    let &t_EI = "\<Esc>[2 q"
+    " Underline in replace mode
+    let &t_SR = "\<Esc>[3 q"
     " Show block cursor in normal mode when vim starts
     autocmd VimEnter * normal! :startinsert | stopinsert
 endif
